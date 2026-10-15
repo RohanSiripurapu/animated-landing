@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    @apply bg-bone text-ink dark:bg-ink dark:text-bone;
+    @apply transition-colors duration-300;
+  }
+
+  ::selection {
+    @apply bg-acid text-ink;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink dark:bg-acid rounded-full;
+  }
+}
+
+@layer components {
+  /* Neo-brutalist card */
+  .brutal-card {
+    @apply border-2 border-ink dark:border-bone bg-white dark:bg-ink;
+    @apply shadow-brutal dark:shadow-[6px_6px_0_0_#F5F5F0];
+  }
+
+  /* Neon glow text */
+  .text-glow {
+    text-shadow: 0 0 12px rgba(198, 255, 0, 0.6);
+  }
+  .text-glow-cyan {
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+  }
+
+  /* Animated gradient background utility */
+  .bg-animated-gradient {
+    background: linear-gradient(
+      -45deg,
+      #c6ff00,
+      #00f0ff,
+      #ff006e,
+      #c6ff00
+    );
+    background-size: 400% 400%;
+    @apply animate-gradient-x;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
